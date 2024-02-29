@@ -28,8 +28,14 @@ function createTriGridForScene(scene) {
   const minY = evenFloor(voxelCoordToNWTriCoord(vec3Create(scene.size.x-1, scene.size.y-1, scene.size.z-1)).y);
   const maxY = evenCeil(voxelCoordToNWTriCoord(VEC3_ZERO).y + 3);
 
+  console.log("min: (" + minX + ", " + minY + ") - max: (" + maxX + ", " + maxY + ")");
+
   const size = vec2Create(maxX-minX, maxY-minY); // size of necessary tri grid
   const offset = vec2Create(-minX, -minY); // offset we should use to make tri coords >= 0
+
+  console.log("size: " + JSON.stringify(scene.size));
+  console.log("offset: " + JSON.stringify(offset));
+  console.log("trigrid size: " + JSON.stringify(size));
 
   const len = size.x * size.y;
   const arr = [];
@@ -67,7 +73,6 @@ function renderSceneToTriGrid(scene, triGrid, offset) {
         if (val) {
           const tc = voxelCoordToNWTriCoord(vec3Create(x, y, z));
           const depth = x + y - z;
-
           setTriGridPixel(triGrid, tc.x+offset.x+0, tc.y+offset.y+0, depth, FACING_UP);
           setTriGridPixel(triGrid, tc.x+offset.x+1, tc.y+offset.y+0, depth, FACING_UP);
           setTriGridPixel(triGrid, tc.x+offset.x+0, tc.y+offset.y+1, depth, FACING_LEFT);
@@ -312,7 +317,7 @@ function segmentGroupsToSVG(triGrid, segmentGroups, svgOpts) {
   const viewBoxWidth = unframedWidth + 2*frameDim;
   const viewBoxHeight = unframedHeight + 2*frameDim;
 
-  return `<svg viewBox="${viewBoxOrigX} ${viewBoxOrigY} ${viewBoxWidth} ${viewBoxHeight}" xmlns="http://www.w3.org/2000/svg"><g stroke="black" stroke-width="0.4" stroke-linecap="round">${pathStr}</g></svg>`;
+  return `<svg viewBox="${viewBoxOrigX} ${viewBoxOrigY} ${viewBoxWidth} ${viewBoxHeight}" xmlns="http://www.w3.org/2000/svg"><g stroke="black" stroke-width="0.2" stroke-linecap="round">${pathStr}</g></svg>`;
 }
 
 function segmentGroupsToFlatUncombinedScaled(segmentGroups) {

@@ -123,6 +123,10 @@ const ops = {
     }
   },
 
+  toggleVoxel: (scene, x, y, z) => {
+    toggleVoxel(scene, x, y, z);
+  },
+
   fillBox,
   makeHollowShell,
 

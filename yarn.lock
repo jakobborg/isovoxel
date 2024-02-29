@@ -2,3 +2,20 @@
 # yarn lockfile v1
 
 
+isovoxel-core@0.1.0, "isovoxel-core@file:C:\\work\\jkbb\\isovoxel\\core":
+  version "0.1.0"
+  resolved "file:core"
+
+"isovoxel-ponoko-export@file:C:\\work\\jkbb\\isovoxel\\ponoko-export":
+  version "0.1.0"
+  resolved "file:ponoko-export"
+
+"isovoxel-sketches@file:C:\\work\\jkbb\\isovoxel\\sketches":
+  version "0.1.0"
+  resolved "file:sketches"
+  dependencies:
+    isovoxel-core "0.1.0"
+
+"isovoxel-thick-cut@file:C:\\work\\jkbb\\isovoxel\\thick-cut":
+  version "0.1.0"
+  resolved "file:thick-cut"
